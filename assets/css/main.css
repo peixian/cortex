@@ -359,3 +359,81 @@ dt + dt + dd {
     padding-bottom: 150px;
   }
 }
+
+#raccoon {
+        height: 2em;
+        width: auto;
+        vertical-align: middle;
+        margin-right: .5em;
+}
+
+.book-search {
+    position: relative;
+    margin: $padding-16 0;
+    border-bottom: 1px solid transparent;
+
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+    input {
+        width: 100%;
+        padding: $padding-8;
+
+        border: 0;
+        border-radius: $border-radius;
+
+        background: $gray-100;
+        color: $body-font-color;
+
+        &:required + .book-search-spinner {
+            display: block;
+        }
+    }
+
+    .book-search-spinner {
+        position: absolute;
+        margin: $padding-8;
+        right: 0;
+        top: 0;
+
+        width: $padding-16;
+        height: $padding-16;
+
+        border: $padding-1 solid transparent;
+        border-top-color: $body-font-color;
+        border-radius: 50%;
+
+        @include spin(1s);
+    }
+}
+
+#search {
+    flex: right;
+    margin-left: auto;
+    width: 20%;
+    margin-right: 10%;
+}
+#book-search-input {
+    width: 100%;
+}
+#book-search-results {
+    list-style: none;
+    position: fixed;
+    float: left;
+    background-color: white;
+    padding-left: 1em;
+    margin-right: 5%;
+}
+
+#book-search-results li {
+    margin-top: 10px;
+}
+
+#metainfo {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}

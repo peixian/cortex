@@ -1,7 +1,44 @@
 {{define "main"}}
 <div class="page" data-level="1">
-  <div class="content">
-    {{ .Content }}
-  </div>
+    <div class="content">
+
+        <div id="rootinfo">
+            {{with .Site.GetPage "posts/root.md"}}{{.Content}}{{end}}
+        </div>
+
+        <div id="metainfo">
+            {{$wordcount := 0}}
+            {{$pages := .Site.Pages}}
+            {{range $pages}}
+            {{$wordcount = add .WordCount $wordcount}}
+            {{end}}
+
+            There are {{ len (where .Site.Pages "Section" "posts") }} notes with {{$wordcount | lang.NumFmt 0}} words.
+            <h4><a href="/notes-map.svg">Notes Map</a></h4>
+        </div>
+
+        {{ $re := $.File.BaseFileName }}
+        {{ $backlinks := slice }}
+        {{ range .Site.AllPages }}
+        {{ if and (findRE $re .RawContent) (not (eq $re .File.BaseFileName)) }}
+        {{ $backlinks = $backlinks | append . }}
+        {{ end }}
+        {{ end }}
+
+        {{ if gt (len $backlinks) 0 }}
+
+        <div>
+            <h4>Content List</h4>
+            <div>
+                <ul>
+                    {{ range $backlinks }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+        {{ end }}
+
+    </div>
 </div>
 {{end}}
