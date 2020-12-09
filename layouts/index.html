@@ -13,7 +13,8 @@
             {{$wordcount = add .WordCount $wordcount}}
             {{end}}
 
-            There are {{ len (where .Site.Pages "Section" "posts") }} notes with {{$wordcount | lang.NumFmt 0}} words.
+            <p>There are {{ len (where .Site.Pages "Section" "posts") }} notes with {{$wordcount | lang.NumFmt 0}} words.</p>
+            <p>Last generated {{ now.Format "Jan 2, 2006 at 3:04pm (MST)" }}.</p>
             <h4><a href="/notes-map.svg">Notes Map</a></h4>
         </div>
 
