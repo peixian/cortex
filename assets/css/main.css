@@ -413,8 +413,8 @@ dt + dt + dd {
 #search {
     flex: right;
     margin-left: auto;
-    width: 20%;
-    margin-right: 10%;
+    width: 50%;
+    margin-right: 2.5%;
 }
 #book-search-input {
     width: 100%;
@@ -423,6 +423,7 @@ dt + dt + dd {
     list-style: none;
     position: fixed;
     float: left;
+    width: 45%;
     background-color: white;
     padding-left: 1em;
     margin-right: 5%;
