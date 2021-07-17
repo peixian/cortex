@@ -18,27 +18,6 @@
             <h4><a href="/graph.html">Notes Map</a></h4>
         </div>
 
-        {{ $re := $.File.BaseFileName }}
-        {{ $backlinks := slice }}
-        {{ range .Site.AllPages }}
-        {{ if and (findRE $re .RawContent) (not (eq $re .File.BaseFileName)) }}
-        {{ $backlinks = $backlinks | append . }}
-        {{ end }}
-        {{ end }}
-
-        {{ if gt (len $backlinks) 0 }}
-
-        <div>
-            <h4>Content List</h4>
-            <div>
-                <ul>
-                    {{ range $backlinks }}
-                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                    {{ end }}
-                </ul>
-            </div>
-        </div>
-        {{ end }}
 
     </div>
 </div>
